@@ -1,0 +1,121 @@
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-brand">👨‍👩‍👧‍👦 Family Members</div>
+  <div class="nav-links">
+    <a routerLink="/profile" class="nav-link">← My Profile</a>
+    <span class="user-tag">{{ user?.username }}</span>
+    <button class="btn-logout" (click)="logout()">Logout</button>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <div>
+      <h1>Manage Family Members</h1>
+      <p>Add, update or remove family members linked to your profile.</p>
+    </div>
+    <button class="btn-add" (click)="openAddForm()">+ Add Member</button>
+  </div>
+
+  <!-- ALERTS -->
+  @if (successMessage) {
+    <div class="alert success">✅ {{ successMessage }}</div>
+  }
+  @if (errorMessage) {
+    <div class="alert error">❌ {{ errorMessage }}</div>
+  }
+
+  <!-- ADD / EDIT FORM -->
+  @if (showForm) {
+    <div class="form-card">
+      <h3>{{ editingId ? 'Edit Family Member' : 'Add Family Member' }}</h3>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" formControlName="firstName" placeholder="First name"
+                   [class.invalid]="form.get('firstName')!.invalid && form.get('firstName')!.touched" />
+            @if (form.get('firstName')!.touched && form.get('firstName')!.hasError('required')) {
+              <span class="error-msg">Required.</span>
+            }
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" formControlName="lastName" placeholder="Last name"
+                   [class.invalid]="form.get('lastName')!.invalid && form.get('lastName')!.touched" />
+            @if (form.get('lastName')!.touched && form.get('lastName')!.hasError('required')) {
+              <span class="error-msg">Required.</span>
+            }
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Relationship</label>
+            <select formControlName="relationship"
+                    [class.invalid]="form.get('relationship')!.invalid && form.get('relationship')!.touched">
+              <option value="">-- Select --</option>
+              @for (r of relationships; track r) {
+                <option [value]="r">{{ r }}</option>
+              }
+            </select>
+            @if (form.get('relationship')!.touched && form.get('relationship')!.hasError('required')) {
+              <span class="error-msg">Required.</span>
+            }
+          </div>
+          <div class="form-group">
+            <label>Date of Birth</label>
+            <input type="date" formControlName="dateOfBirth" />
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary" [disabled]="loading">
+            {{ loading ? 'Saving...' : (editingId ? 'Update Member' : 'Add Member') }}
+          </button>
+          <button type="button" class="btn-cancel" (click)="cancelForm()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  }
+
+  <!-- TABLE -->
+  @if (members.length > 0) {
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Relationship</th>
+            <th>Date of Birth</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (member of members; track member.id; let i = $index) {
+            <tr>
+              <td>{{ i + 1 }}</td>
+              <td>{{ member.firstName }}</td>
+              <td>{{ member.lastName }}</td>
+              <td><span class="badge">{{ member.relationship }}</span></td>
+              <td>{{ member.dateOfBirth || '—' }}</td>
+              <td class="actions">
+                <button class="btn-edit" (click)="openEditForm(member)">✏️ Edit</button>
+                <button class="btn-delete" (click)="deleteMember(member.id!)">🗑️ Delete</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  } @else {
+    <div class="empty-state">
+      <div class="empty-icon">👨‍👩‍👧</div>
+      <h3>No Family Members Yet</h3>
+      <p>Click "Add Member" to add your first family member.</p>
+    </div>
+  }
+
+</div>

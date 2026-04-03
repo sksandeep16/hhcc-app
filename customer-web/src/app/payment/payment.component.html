@@ -1,0 +1,55 @@
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-right">
+    <ng-container *ngIf="user?.role === 'ADMIN'">
+      <a routerLink="/admin" class="topbar-admin">🛡️ Admin</a>
+    </ng-container>
+  </div>
+</header>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-brand">💳 Payment</div>
+  <div class="nav-links">
+    <a routerLink="/profile" class="nav-link">← My Profile</a>
+    <span class="user-tag">{{ user?.username }}</span>
+    <button class="btn-logout" (click)="logout()">Logout</button>
+  </div>
+</nav>
+
+<div class="payment-layout">
+  <main class="right-content">
+    <div *ngIf="statusMessage">
+      <div class="success-warning">
+        <p>{{ statusMessage }}</p>
+        <p *ngIf="countdown > 0">Redirecting to profile page in {{ countdown }} seconds...</p>
+      </div>
+    </div>
+  <div class="payment-container">
+    <h2>Pay with Credit Card</h2>
+    <form (ngSubmit)="submitPayment()" #paymentForm="ngForm" autocomplete="off">
+      <div class="form-group">
+        <label for="name">Name on Card</label>
+        <input id="name" name="name" [(ngModel)]="name" required placeholder="Cardholder Name" />
+      </div>
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <input id="amount" name="amount" type="number" min="1" [(ngModel)]="amount" (change)="onAmountChange()" required placeholder="Amount" />
+      </div>
+      <div class="form-group">
+        <label>Card Details</label>
+        <div id="card-element" class="card-element"></div>
+      </div>
+      <div class="form-group">
+        <button type="submit" [disabled]="isSubmitted || !amount || !name">Pay Now</button>
+      </div>
+      <div *ngIf="statusMessage" class="status-message">{{ statusMessage }}</div>
+      <div *ngIf="countdown > 0" class="countdown">Redirecting in {{ countdown }}...</div>
+    </form>
+    <button (click)="logout()">Logout</button>
+  </div>
+    <div *ngIf="isSubmitted && !statusMessage">
+      <p>Payment submitted! (stub)</p>
+    </div>
+  </main>
+</div>

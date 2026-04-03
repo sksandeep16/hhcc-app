@@ -1,0 +1,157 @@
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-brand">🐾 Pet Management</div>
+  <div class="nav-links">
+    <a routerLink="/profile" class="nav-link">← My Profile</a>
+    <span class="user-tag">{{ user?.username }}</span>
+    <button class="btn-logout" (click)="logout()">Logout</button>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <div>
+      <h1>My Pets</h1>
+      <p>Add, update or remove pets linked to your profile.</p>
+    </div>
+    <button class="btn-add" (click)="openAddForm()">+ Add Pet</button>
+  </div>
+
+  <!-- ALERTS -->
+  @if (successMessage) {
+    <div class="alert success">✅ {{ successMessage }}</div>
+  }
+  @if (errorMessage) {
+    <div class="alert error">❌ {{ errorMessage }}</div>
+  }
+
+  <!-- ADD / EDIT FORM -->
+  @if (showForm) {
+    <div class="form-card">
+      <h3>{{ editingId ? '✏️ Edit Pet' : '➕ Add New Pet' }}</h3>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Pet Name *</label>
+            <input type="text" formControlName="name" placeholder="e.g. Buddy"
+                   [class.invalid]="form.get('name')!.invalid && form.get('name')!.touched" />
+            @if (form.get('name')!.touched && form.get('name')!.hasError('required')) {
+              <span class="error-msg">Name is required.</span>
+            }
+          </div>
+          <div class="form-group">
+            <label>Species *</label>
+            <select formControlName="species"
+                    [class.invalid]="form.get('species')!.invalid && form.get('species')!.touched">
+              <option value="">-- Select --</option>
+              @for (s of speciesList; track s) {
+                <option [value]="s">{{ s }}</option>
+              }
+            </select>
+            @if (form.get('species')!.touched && form.get('species')!.hasError('required')) {
+              <span class="error-msg">Species is required.</span>
+            }
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Breed</label>
+            <input type="text" formControlName="breed" placeholder="e.g. Golden Retriever" />
+          </div>
+          <div class="form-group">
+            <label>Gender *</label>
+            <select formControlName="gender">
+              @for (g of genderList; track g) {
+                <option [value]="g">{{ g }}</option>
+              }
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Date of Birth</label>
+            <input type="date" formControlName="dateOfBirth" />
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary" [disabled]="loading">
+            {{ loading ? 'Saving...' : (editingId ? 'Update Pet' : 'Add Pet') }}
+          </button>
+          <button type="button" class="btn-cancel" (click)="cancelForm()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  }
+
+  <!-- PET CARDS -->
+  @if (pets.length > 0) {
+    <div class="pets-grid">
+      @for (pet of pets; track pet.id) {
+        <div class="pet-card">
+          <div class="pet-icon">{{ speciesIcon(pet.species) }}</div>
+          <div class="pet-info">
+            <h3>{{ pet.name }}</h3>
+            <span class="species-badge">{{ pet.species }}</span>
+            <div class="pet-details">
+              @if (pet.breed) {
+                <div class="detail-row"><span class="label">Breed</span><span>{{ pet.breed }}</span></div>
+              }
+              <div class="detail-row"><span class="label">Gender</span><span>{{ pet.gender }}</span></div>
+              @if (pet.dateOfBirth) {
+                <div class="detail-row"><span class="label">Born</span><span>{{ pet.dateOfBirth }}</span></div>
+              }
+            </div>
+          </div>
+          <div class="pet-actions">
+            <button class="btn-edit" (click)="openEditForm(pet)">✏️ Edit</button>
+            <button class="btn-delete" (click)="deletePet(pet.id!)">🗑️ Remove</button>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- TABLE VIEW -->
+    <div class="table-wrapper">
+      <h3 class="table-title">All Pets — Table View</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Species</th>
+            <th>Breed</th>
+            <th>Gender</th>
+            <th>Date of Birth</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (pet of pets; track pet.id; let i = $index) {
+            <tr>
+              <td>{{ i + 1 }}</td>
+              <td><strong>{{ speciesIcon(pet.species) }} {{ pet.name }}</strong></td>
+              <td><span class="badge">{{ pet.species }}</span></td>
+              <td>{{ pet.breed || '—' }}</td>
+              <td>{{ pet.gender }}</td>
+              <td>{{ pet.dateOfBirth || '—' }}</td>
+              <td class="actions">
+                <button class="btn-edit" (click)="openEditForm(pet)">✏️</button>
+                <button class="btn-delete" (click)="deletePet(pet.id!)">🗑️</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+  } @else {
+    <div class="empty-state">
+      <div class="empty-icon">🐾</div>
+      <h3>No Pets Added Yet</h3>
+      <p>Click "Add Pet" to add your first pet to your profile.</p>
+    </div>
+  }
+
+</div>

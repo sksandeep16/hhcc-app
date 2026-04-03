@@ -1,0 +1,66 @@
+﻿.navbar { display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:#fff;border-bottom:1px solid #e5e7eb;box-shadow:0 1px 6px rgba(0,0,0,.06);position:sticky;top:0;z-index:100; }
+.nav-brand { font-size:1.2rem;font-weight:700;color:#1a2a4a; }
+.nav-links { display:flex;align-items:center;gap:16px; }
+.nav-link { text-decoration:none;color:#1976d2;font-weight:600;font-size:.9rem; }
+.user-tag { background:#e3f2fd;color:#1976d2;padding:4px 12px;border-radius:20px;font-size:.85rem;font-weight:600; }
+.btn-signin { background:#1976d2;color:#fff;padding:6px 18px;border-radius:8px;text-decoration:none;font-weight:600;font-size:.85rem; }
+
+.page { max-width:1050px;margin:0 auto;padding:40px 24px; }
+
+.success-card { text-align:center;padding:80px 40px;background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.1); }
+.success-icon { font-size:4rem;margin-bottom:16px; }
+.success-card h2 { font-size:2rem;color:#1a2a4a;margin-bottom:12px; }
+.success-card p { color:#6b7280;margin-bottom:28px;font-size:1rem; }
+
+.page-layout { display:grid;grid-template-columns:1fr 340px;gap:32px;align-items:start; }
+
+.form-section h1 { font-size:1.8rem;color:#1a2a4a;font-weight:800;margin-bottom:6px; }
+.subtitle { color:#6b7280;margin-bottom:24px; }
+
+.alert { padding:12px 16px;border-radius:8px;font-size:.875rem;margin-bottom:16px; }
+.alert.error { background:#fee2e2;color:#991b1b;border:1px solid #fca5a5; }
+
+.category-toggle { display:flex;gap:0;margin-bottom:24px;border:1.5px solid #e5e7eb;border-radius:10px;overflow:hidden; }
+.category-toggle button { flex:1;padding:12px;border:none;background:#f9fafb;font-weight:600;font-size:.9rem;cursor:pointer;color:#6b7280;transition:all .2s; }
+.category-toggle button.active { background:#1976d2;color:#fff; }
+
+.form-row { display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px; }
+.form-group { display:flex;flex-direction:column;gap:6px;margin-bottom:16px; }
+.form-group label { font-size:.85rem;font-weight:600;color:#374151; }
+.form-group input,.form-group textarea,.form-group select {
+  padding:10px 12px;border:1.5px solid #d1d5db;border-radius:8px;font-size:.9rem;outline:none;font-family:inherit;resize:vertical;
+}
+.form-group input:focus,.form-group textarea:focus { border-color:#1976d2;box-shadow:0 0 0 3px rgba(25,118,210,.1); }
+.form-group input.invalid,.form-group textarea.invalid { border-color:#ef4444; }
+.error-msg { color:#ef4444;font-size:.78rem; }
+
+.support-options { display:flex;gap:12px; }
+.support-option { display:flex;align-items:center;gap:8px;padding:10px 18px;border:1.5px solid #d1d5db;border-radius:8px;cursor:pointer;font-weight:600;font-size:.88rem;color:#374151;transition:all .2s; }
+.support-option input[type="radio"] { display:none; }
+.support-option.selected { border-color:#1976d2;background:#e3f2fd;color:#1976d2; }
+
+.stars { display:flex;gap:6px; }
+.star { font-size:2rem;color:#d1d5db;cursor:pointer;transition:color .1s; }
+.star.active { color:#f59e0b; }
+
+.btn-submit { width:100%;padding:14px;background:#1976d2;color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;margin-top:8px;transition:background .2s; }
+.btn-submit:hover:not(:disabled) { background:#1565c0; }
+.btn-submit:disabled { background:#90caf9;cursor:not-allowed; }
+
+.btn-primary { background:#1976d2;color:#fff;border:none;padding:12px 28px;border-radius:8px;font-weight:600;cursor:pointer;font-size:.95rem; }
+
+/* SIDEBAR */
+.sidebar { display:flex;flex-direction:column;gap:20px; }
+.contact-card { background:#fff;border-radius:12px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.07);border:1px solid #e5e7eb; }
+.contact-card h3 { font-size:1rem;color:#1a2a4a;font-weight:700;margin-bottom:16px; }
+.contact-item { display:flex;align-items:flex-start;gap:14px;margin-bottom:18px; }
+.contact-item:last-child { margin-bottom:0; }
+.contact-icon { font-size:1.8rem; }
+.contact-item strong { display:block;font-size:.9rem;color:#1a2a4a;margin-bottom:2px; }
+.contact-item p { color:#6b7280;font-size:.82rem;margin:0;line-height:1.5; }
+
+.faq-card { background:#f0f4ff;border-radius:12px;padding:20px;border:1px solid #bbdefb; }
+.faq-card h4 { font-size:.9rem;color:#1976d2;font-weight:700;margin-bottom:12px; }
+.faq-card ul { padding-left:16px;margin:0; }
+.faq-card li { color:#374151;font-size:.85rem;margin-bottom:8px;line-height:1.5; }
+.faq-card a { color:#1976d2;text-decoration:none;font-weight:600; }

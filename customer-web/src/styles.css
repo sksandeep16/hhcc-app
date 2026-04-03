@@ -1,0 +1,48 @@
+/* ── CSS VARIABLES (CareApp theme) ──────────────────────── */
+:root {
+  --primary:       #1976d2;
+  --primary-dark:  #1565c0;
+  --primary-light: #e3f2fd;
+  --primary-mid:   #90caf9;
+  --navy:          #1a2a4a;
+  --bg-page:       #f0f7ff;
+  --font:          'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* ── RESET ───────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg-page);
+  min-height: 100vh;
+  color: #37474f;
+}
+
+/* ── AUTH PAGES (centered card layout) ───────────────────── */
+app-login,
+app-registration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #dbeafe 0%, #e0f2fe 100%);
+}
+
+/* ── FULL-PAGE LAYOUT (sidebar + main) ───────────────────── */
+app-dashboard,
+app-admin,
+app-feedback,
+app-family,
+app-pets,
+app-family-schedule,
+app-pet-schedule,
+app-payment,
+app-profile {
+  display: block;
+  min-height: 100vh;
+}

@@ -1,0 +1,124 @@
+<!-- ── NAVBAR ─────────────────────────────────────────────── -->
+<nav class="navbar">
+  <div class="nav-brand">
+    <span class="brand-cross">✚</span>
+    <span class="brand-name">CareApp</span>
+  </div>
+  <div class="nav-links">
+    <a routerLink="/home"     class="nav-link">Home</a>
+    <a routerLink="/feedback" class="nav-link">Support</a>
+    <a routerLink="/login"    class="btn btn-outline-nav">Sign In</a>
+    <a routerLink="/register" class="btn btn-primary-nav">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ── HERO ───────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-card">
+
+    <!-- Doctor illustration -->
+    <div class="hero-illustration">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 160" width="130" height="170" aria-hidden="true">
+        <!-- Medical cap -->
+        <rect x="36" y="6"  width="48" height="16" rx="8"   fill="#1565c0"/>
+        <rect x="24" y="19" width="72" height="11" rx="5.5" fill="#1976d2"/>
+        <!-- Red cross on cap -->
+        <rect x="56" y="9"  width="8"  height="12" rx="2"   fill="#e53935"/>
+        <rect x="52" y="13" width="16" height="4"  rx="2"   fill="#e53935"/>
+        <!-- Face -->
+        <ellipse cx="60" cy="52" rx="27" ry="26" fill="#ffcc80"/>
+        <!-- Eyes -->
+        <circle cx="50" cy="49" r="3.5" fill="#37474f"/>
+        <circle cx="70" cy="49" r="3.5" fill="#37474f"/>
+        <!-- Eye shine -->
+        <circle cx="51.5" cy="47.5" r="1.2" fill="white"/>
+        <circle cx="71.5" cy="47.5" r="1.2" fill="white"/>
+        <!-- Eyebrows -->
+        <path d="M46 43 Q50 40 54 43" stroke="#6d4c41" stroke-width="2"   fill="none" stroke-linecap="round"/>
+        <path d="M66 43 Q70 40 74 43" stroke="#6d4c41" stroke-width="2"   fill="none" stroke-linecap="round"/>
+        <!-- Smile -->
+        <path d="M50 63 Q60 70 70 63"  stroke="#6d4c41" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <!-- Coat body -->
+        <rect x="14" y="82" width="92" height="72" rx="18"  fill="#e3f2fd"/>
+        <!-- Lapels -->
+        <path d="M60 82 L40 102 L52 118 L60 107 L68 118 L80 102 Z" fill="white"/>
+        <!-- Shirt buttons area -->
+        <circle cx="60" cy="122" r="2.5" fill="#90caf9"/>
+        <circle cx="60" cy="132" r="2.5" fill="#90caf9"/>
+        <!-- Stethoscope -->
+        <path d="M36 104 Q24 124 34 136 Q44 146 52 137" stroke="#1976d2" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="52" cy="139" r="7" fill="#1976d2"/>
+        <!-- Name badge -->
+        <rect x="64" y="106" width="30" height="20" rx="4"  fill="white" stroke="#90caf9" stroke-width="1.5"/>
+        <rect x="68" y="111" width="22" height="2.5" rx="1.2" fill="#1976d2"/>
+        <rect x="68" y="117" width="15" height="2.5" rx="1.2" fill="#90caf9"/>
+      </svg>
+    </div>
+
+    <!-- Hero content -->
+    <div class="hero-content">
+      <h1 class="hero-title">Welcome to CareApp</h1>
+      <p class="hero-sub">Your trusted partner in care services.</p>
+      <div class="hero-actions">
+        <a routerLink="/register" class="btn btn-hero-primary">Sign Up</a>
+        <a routerLink="/login"    class="btn btn-hero-outline">Sign In</a>
+        <a routerLink="/services" class="btn btn-hero-outline">Explore Services</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── SERVICES ───────────────────────────────────────────── -->
+<section class="services-section" id="services">
+  <div class="services-grid">
+
+    <!-- Our Services card -->
+    <div class="info-card">
+      <div class="card-heading">
+        <span class="card-heading-icon blue">👥</span>
+        <h2>Our Services</h2>
+      </div>
+      <div class="item-list">
+        @for (s of services; track s.label) {
+          <div class="service-item">
+            <span class="item-icon blue-icon">{{ s.icon }}</span>
+            <span class="item-label">{{ s.label }}</span>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Why Choose Us card -->
+    <div class="info-card">
+      <div class="card-heading">
+        <span class="card-heading-icon green">✅</span>
+        <h2>Why Choose Us?</h2>
+      </div>
+      <div class="item-list">
+        @for (r of reasons; track r.label) {
+          <div class="service-item">
+            <span class="item-icon blue-icon">{{ r.icon }}</span>
+            <span class="item-label">{{ r.label }}</span>
+          </div>
+        }
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-brand">
+    <span class="brand-cross footer-cross">✚</span>
+    <span>CareApp</span>
+  </div>
+  <p class="footer-copy">© 2026 CareApp. Compassionate care, every day.</p>
+  <div class="footer-links">
+    <a routerLink="/home">Home</a>
+    <a routerLink="/register">Register</a>
+    <a routerLink="/login">Sign In</a>
+    <a routerLink="/feedback">Support</a>
+  </div>
+</footer>

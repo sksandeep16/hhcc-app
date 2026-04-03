@@ -1,0 +1,160 @@
+<nav class="navbar">
+  <div class="nav-brand">💬 Feedback & Support</div>
+  <div class="nav-links">
+    @if (user) {
+      <a routerLink="/profile" class="nav-link">← My Profile</a>
+      <span class="user-tag">{{ user.username }}</span>
+    } @else {
+      <a routerLink="/home" class="nav-link">← Home</a>
+      <a routerLink="/login" class="btn-signin">Sign In</a>
+    }
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- SUCCESS STATE -->
+  @if (submitted) {
+    <div class="success-card">
+      <div class="success-icon">✅</div>
+      <h2>Thank You!</h2>
+      <p>Your {{ form.get('category')?.value === 'SUPPORT' ? 'support request' : 'feedback' }} has been submitted successfully. Our team will get back to you soon.</p>
+      <button class="btn-primary" (click)="reset()">Submit Another</button>
+    </div>
+  } @else {
+
+    <div class="page-layout">
+
+      <!-- FORM -->
+      <div class="form-section">
+        <h1>How Can We Help?</h1>
+        <p class="subtitle">Share your feedback or reach out for support.</p>
+
+        @if (errorMessage) {
+          <div class="alert error">❌ {{ errorMessage }}</div>
+        }
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+          <!-- Category Toggle -->
+          <div class="category-toggle">
+            <button type="button" [class.active]="form.get('category')!.value === 'FEEDBACK'"
+                    (click)="form.get('category')!.setValue('FEEDBACK')">
+              ⭐ Leave Feedback
+            </button>
+            <button type="button" [class.active]="form.get('category')!.value === 'SUPPORT'"
+                    (click)="form.get('category')!.setValue('SUPPORT')">
+              🎧 Get Support
+            </button>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name *</label>
+              <input type="text" formControlName="name" placeholder="Full name"
+                     [class.invalid]="form.get('name')!.invalid && form.get('name')!.touched" />
+              @if (form.get('name')!.touched && form.get('name')!.hasError('required')) {
+                <span class="error-msg">Required.</span>
+              }
+            </div>
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" formControlName="email" placeholder="your@email.com"
+                     [class.invalid]="form.get('email')!.invalid && form.get('email')!.touched" />
+              @if (form.get('email')!.touched && form.get('email')!.hasError('required')) {
+                <span class="error-msg">Required.</span>
+              }
+            </div>
+          </div>
+
+          <!-- Support Type (only for SUPPORT) -->
+          @if (category === 'SUPPORT') {
+            <div class="form-group">
+              <label>Preferred Support Channel *</label>
+              <div class="support-options">
+                @for (opt of [['CHAT','💬 Live Chat'],['EMAIL','📧 Email'],['PHONE','📞 Phone']]; track opt[0]) {
+                  <label class="support-option" [class.selected]="form.get('supportType')!.value === opt[0]">
+                    <input type="radio" formControlName="supportType" [value]="opt[0]" />
+                    {{ opt[1] }}
+                  </label>
+                }
+              </div>
+              @if (form.get('supportType')!.touched && form.get('supportType')!.hasError('required')) {
+                <span class="error-msg">Please select a support channel.</span>
+              }
+            </div>
+          }
+
+          <!-- Star Rating (only for FEEDBACK) -->
+          @if (category === 'FEEDBACK') {
+            <div class="form-group">
+              <label>Rating *</label>
+              <div class="stars">
+                @for (star of [1,2,3,4,5]; track star) {
+                  <span class="star" [class.active]="(form.get('rating')!.value ?? 0) >= star"
+                        (click)="setRating(star)">★</span>
+                }
+              </div>
+              @if (form.get('rating')!.touched && form.get('rating')!.hasError('required')) {
+                <span class="error-msg">Please select a rating.</span>
+              }
+            </div>
+          }
+
+          <div class="form-group">
+            <label>Message *</label>
+            <textarea formControlName="message" rows="5" placeholder="Describe your feedback or issue in detail..."
+                      [class.invalid]="form.get('message')!.invalid && form.get('message')!.touched"></textarea>
+            @if (form.get('message')!.touched && form.get('message')!.hasError('required')) {
+              <span class="error-msg">Required.</span>
+            } @else if (form.get('message')!.touched && form.get('message')!.hasError('minlength')) {
+              <span class="error-msg">At least 10 characters required.</span>
+            }
+          </div>
+
+          <button type="submit" class="btn-submit" [disabled]="loading">
+            {{ loading ? 'Submitting...' : (category === 'SUPPORT' ? '🎧 Submit Support Request' : '⭐ Submit Feedback') }}
+          </button>
+        </form>
+      </div>
+
+      <!-- CONTACT INFO SIDEBAR -->
+      <div class="sidebar">
+        <h3>Contact Us Directly</h3>
+        <div class="contact-card">
+          <div class="contact-item">
+            <div class="contact-icon">💬</div>
+            <div>
+              <strong>Live Chat</strong>
+              <p>Available Mon–Fri<br/>9 AM – 6 PM EST</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div>
+              <strong>Email Support</strong>
+              <p>support@demoapp.com<br/>Response within 24 hrs</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <strong>Phone Support</strong>
+              <p>+1 (800) 123-4567<br/>Mon–Fri, 9 AM – 5 PM</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-card">
+          <h4>Quick Help</h4>
+          <ul>
+            <li>Having login issues? <a routerLink="/login">Reset here</a></li>
+            <li>New user? <a routerLink="/register">Register now</a></li>
+            <li>Manage your pets & family from the dashboard</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  }
+</div>

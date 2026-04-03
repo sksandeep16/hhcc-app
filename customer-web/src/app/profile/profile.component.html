@@ -1,0 +1,241 @@
+<!-- ── TOPBAR ─────────────────────────────────────────────── -->
+<header class="topbar">
+  <div class="topbar-brand">
+    <span class="brand-icon">✚</span>
+    <span class="brand-name">CareApp</span>
+  </div>
+  <div class="topbar-right">
+    <a routerLink="/home" class="topbar-link">🏠 Home</a>
+    @if (user?.role === 'ADMIN') {
+      <a routerLink="/admin" class="topbar-admin">🛡️ Admin</a>
+    }
+    <div class="topbar-avatar" title="{{ user?.username }}">{{ initial }}</div>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- ── SIDEBAR ────────────────────────────────────────────── -->
+  <aside class="sidebar">
+    <div class="profile">
+      <div class="avatar">{{ initial }}</div>
+      <div class="profile-info">
+        <h3>{{ user?.username }}</h3>
+        <p>{{ user?.email }}</p>
+        <span class="role-badge" [class.admin]="user?.role === 'ADMIN'">{{ user?.role }}</span>
+      </div>
+    </div>
+
+    <nav class="side-nav">
+      <a routerLink="/profile"  class="side-link active-link"><span>👤</span> My Profile</a>
+      <a routerLink="/family"   class="side-link"><span>👨‍👩‍👧‍👦</span> Family Members</a>
+      <a routerLink="/pets"     class="side-link"><span>🐾</span> My Pets</a>
+      <a routerLink="/feedback" class="side-link"><span>💬</span> Feedback & Support</a>
+      <a routerLink="/payment" class="side-link"><span>💳</span> Payments</a>
+      @if (user?.role === 'ADMIN') {
+        <a routerLink="/admin" class="side-link admin-link"><span>🛡️</span> Admin Dashboard</a>
+      }
+    </nav>
+
+    <button class="btn-logout" (click)="logout()">
+      <span>⏻</span> Logout
+    </button>
+  </aside>
+
+  <!-- ── MAIN CONTENT ──────────────────────────────────────── -->
+  <main class="main">
+
+    <!-- Profile Banner -->
+    <div class="profile-banner">
+      <div class="banner-avatar">{{ initial }}</div>
+      <div class="banner-info">
+        <h1 class="banner-name">{{ user?.username }}</h1>
+        <p class="banner-email">{{ user?.email }}</p>
+        <span class="banner-role" [class.admin]="user?.role === 'ADMIN'">{{ user?.role }}</span>
+      </div>
+      <div class="banner-stats">
+        <div class="bstat"><span>{{ stats.familyMembers }}</span><label>Family</label></div>
+        <div class="bstat"><span>{{ stats.pets }}</span><label>Pets</label></div>
+      </div>
+    </div>
+
+    <div class="content-grid">
+
+      <!-- ── LEFT: Activity Summary ──────────────────────────── -->
+      <div class="left-col">
+
+        <div class="card">
+          <h2 class="card-title">📊 Activity Summary</h2>
+          <div class="activity-list">
+            <a routerLink="/family" class="activity-item act-purple">
+              <span class="act-icon">👨‍👩‍👧‍👦</span>
+              <div>
+                <p class="act-label">Family Members</p>
+                <p class="act-value">{{ stats.familyMembers }} registered</p>
+              </div>
+              <span class="act-arrow">→</span>
+            </a>
+            <a routerLink="/pets" class="activity-item act-green">
+              <span class="act-icon">🐾</span>
+              <div>
+                <p class="act-label">Pets</p>
+                <p class="act-value">{{ stats.pets }} registered</p>
+              </div>
+              <span class="act-arrow">→</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── RIGHT: Settings ──────────────────────────────────── -->
+      <div class="right-col">
+
+        <!-- Edit Profile Card -->
+        <div class="card">
+          <div class="card-head">
+            <h2 class="card-title">✏️ Profile Information</h2>
+            @if (!editingProfile) {
+              <button class="btn-edit" (click)="startEdit()">Edit</button>
+            }
+          </div>
+
+          @if (profileSuccess) {
+            <div class="alert alert-success">{{ profileSuccess }}</div>
+          }
+          @if (profileError) {
+            <div class="alert alert-error">{{ profileError }}</div>
+          }
+
+          @if (!editingProfile) {
+            <!-- View mode -->
+            <div class="info-rows">
+              <div class="info-row">
+                <span class="info-key">Username</span>
+                <span class="info-val">{{ user?.username }}</span>
+              </div>
+              <div class="info-row">
+                <span class="info-key">Email</span>
+                <span class="info-val">{{ user?.email }}</span>
+              </div>
+              <div class="info-row">
+                <span class="info-key">Role</span>
+                <span class="info-val">
+                  <span class="badge" [class.badge-admin]="user?.role === 'ADMIN'">{{ user?.role }}</span>
+                </span>
+              </div>
+            </div>
+          } @else {
+            <!-- Edit mode -->
+            <form [formGroup]="profileForm" (ngSubmit)="saveProfile()" class="settings-form">
+              <div class="field">
+                <label>Username</label>
+                <input formControlName="username" type="text" placeholder="Enter username"
+                       [class.invalid]="pf['username'].invalid && pf['username'].touched" />
+                @if (pf['username'].errors?.['required'] && pf['username'].touched) {
+                  <span class="field-err">Username is required</span>
+                } @else if (pf['username'].errors?.['minlength'] && pf['username'].touched) {
+                  <span class="field-err">Minimum 3 characters</span>
+                }
+              </div>
+
+              <div class="field">
+                <label>Email</label>
+                <input formControlName="email" type="email" placeholder="Enter email"
+                       [class.invalid]="pf['email'].invalid && pf['email'].touched" />
+                @if (pf['email'].errors?.['required'] && pf['email'].touched) {
+                  <span class="field-err">Email is required</span>
+                } @else if (pf['email'].errors?.['email'] && pf['email'].touched) {
+                  <span class="field-err">Enter a valid email address</span>
+                }
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn-primary" [disabled]="profileLoading">
+                  {{ profileLoading ? 'Saving…' : 'Save Changes' }}
+                </button>
+                <button type="button" class="btn-secondary" (click)="cancelEdit()">Cancel</button>
+              </div>
+            </form>
+          }
+        </div>
+
+        <!-- Change Password Card -->
+        <div class="card">
+          <h2 class="card-title">🔒 Change Password</h2>
+
+          @if (passwordSuccess) {
+            <div class="alert alert-success">{{ passwordSuccess }}</div>
+          }
+          @if (passwordError) {
+            <div class="alert alert-error">{{ passwordError }}</div>
+          }
+
+          <form [formGroup]="passwordForm" (ngSubmit)="savePassword()" class="settings-form">
+
+            <div class="field">
+              <label>Current Password</label>
+              <div class="pw-wrap">
+                <input formControlName="currentPassword"
+                       [type]="showCurrentPw ? 'text' : 'password'"
+                       placeholder="Enter current password"
+                       [class.invalid]="pwf['currentPassword'].invalid && pwf['currentPassword'].touched" />
+                <button type="button" class="pw-toggle" (click)="showCurrentPw = !showCurrentPw">
+                  {{ showCurrentPw ? '🙈' : '👁️' }}
+                </button>
+              </div>
+              @if (pwf['currentPassword'].errors?.['required'] && pwf['currentPassword'].touched) {
+                <span class="field-err">Current password is required</span>
+              }
+            </div>
+
+            <div class="field">
+              <label>New Password</label>
+              <div class="pw-wrap">
+                <input formControlName="newPassword"
+                       [type]="showNewPw ? 'text' : 'password'"
+                       placeholder="Min 6 characters"
+                       [class.invalid]="pwf['newPassword'].invalid && pwf['newPassword'].touched" />
+                <button type="button" class="pw-toggle" (click)="showNewPw = !showNewPw">
+                  {{ showNewPw ? '🙈' : '👁️' }}
+                </button>
+              </div>
+              @if (pwf['newPassword'].errors?.['required'] && pwf['newPassword'].touched) {
+                <span class="field-err">New password is required</span>
+              } @else if (pwf['newPassword'].errors?.['minlength'] && pwf['newPassword'].touched) {
+                <span class="field-err">Minimum 6 characters</span>
+              }
+            </div>
+
+            <div class="field">
+              <label>Confirm New Password</label>
+              <div class="pw-wrap">
+                <input formControlName="confirmPassword"
+                       [type]="showConfirmPw ? 'text' : 'password'"
+                       placeholder="Repeat new password"
+                       [class.invalid]="(pwf['confirmPassword'].invalid || pwMismatch) && pwf['confirmPassword'].touched" />
+                <button type="button" class="pw-toggle" (click)="showConfirmPw = !showConfirmPw">
+                  {{ showConfirmPw ? '🙈' : '👁️' }}
+                </button>
+              </div>
+              @if (pwf['confirmPassword'].errors?.['required'] && pwf['confirmPassword'].touched) {
+                <span class="field-err">Please confirm your new password</span>
+              } @else if (pwMismatch) {
+                <span class="field-err">Passwords do not match</span>
+              }
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-danger" [disabled]="passwordLoading">
+                {{ passwordLoading ? 'Changing…' : 'Change Password' }}
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+</div>

@@ -1,0 +1,293 @@
+<div class="admin-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-icon">🛡️</span>
+      <span class="brand-name">Admin Panel</span>
+    </div>
+    <nav class="nav-links">
+      <a (click)="activeTab='overview'"  [class.active]="activeTab==='overview'">📊 Overview</a>
+      <a (click)="activeTab='users'"     [class.active]="activeTab==='users'">👥 User Management</a>
+      <a (click)="activeTab='feedback'"  [class.active]="activeTab==='feedback'">💬 Feedback</a>
+    </nav>
+    <div class="sidebar-footer">
+      <span class="admin-badge">{{ adminUser?.username }}</span>
+      <button class="btn-logout" (click)="logout()">Logout</button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <!-- ══════════ OVERVIEW ══════════ -->
+    <section *ngIf="activeTab==='overview'" class="tab-section">
+      <h2 class="section-title">Platform Overview</h2>
+      <div class="stats-grid" *ngIf="stats">
+        <div class="stat-card blue">
+          <div class="stat-icon">👤</div>
+          <div class="stat-num">{{ stats.totalUsers }}</div>
+          <div class="stat-label">Total Users</div>
+        </div>
+        <div class="stat-card green">
+          <div class="stat-icon">👨‍👩‍👧</div>
+          <div class="stat-num">{{ stats.totalFamilyMembers }}</div>
+          <div class="stat-label">Family Members</div>
+        </div>
+        <div class="stat-card teal">
+          <div class="stat-icon">🐾</div>
+          <div class="stat-num">{{ stats.totalPets }}</div>
+          <div class="stat-label">Pets Registered</div>
+        </div>
+        <div class="stat-card red">
+          <div class="stat-icon">💬</div>
+          <div class="stat-num">{{ stats.totalFeedback }}</div>
+          <div class="stat-label">Feedback Items</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ USER MANAGEMENT ══════════ -->
+    <section *ngIf="activeTab==='users'" class="tab-section">
+      <h2 class="section-title">User Management</h2>
+
+      <!-- USER LIST (when no user selected) -->
+      <div *ngIf="!selectedUser" class="user-list-wrapper">
+        <p class="hint-text">Select a user to view and manage their data.</p>
+
+        <div class="search-bar">
+          <input type="text" placeholder="Search by username or email…" [(ngModel)]="userSearch" (keyup.enter)="onUserSearch()" class="search-input"/>
+          <select [(ngModel)]="userRoleFilter" (change)="onUserSearch()" class="filter-select">
+            <option value="">All Roles</option>
+            <option value="USER">USER</option>
+            <option value="ADMIN">ADMIN</option>
+          </select>
+          <button class="btn btn-primary sm" (click)="onUserSearch()">Search</button>
+        </div>
+
+        <p class="result-count">{{ userTotal }} user(s) found</p>
+
+        <table class="data-table">
+          <thead>
+            <tr><th>#</th><th>Username</th><th>Email</th><th>Role</th><th>Action</th></tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let u of userList">
+              <td>{{ u.id }}</td>
+              <td><strong>{{ u.username }}</strong></td>
+              <td>{{ u.email }}</td>
+              <td><span class="role-badge" [class.admin-role]="u.role==='ADMIN'">{{ u.role }}</span></td>
+              <td><button class="btn btn-primary sm" (click)="selectUser(u)">Manage →</button></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="pagination" *ngIf="userTotalPages > 1">
+          <button class="btn sm" (click)="userPrevPage()" [disabled]="userPage === 0">‹ Prev</button>
+          <span class="page-info">Page {{ userPage + 1 }} of {{ userTotalPages }}</span>
+          <button class="btn sm" (click)="userNextPage()" [disabled]="userPage >= userTotalPages - 1">Next ›</button>
+        </div>
+      </div>
+
+      <!-- USER DATA PANEL -->
+      <div *ngIf="selectedUser" class="user-panel">
+
+        <div class="user-panel-header">
+          <div class="user-info">
+            <div class="user-avatar">{{ selectedUser.username.charAt(0).toUpperCase() }}</div>
+            <div>
+              <h3>{{ selectedUser.username }}</h3>
+              <p>{{ selectedUser.email }} &nbsp;|&nbsp; <span class="role-badge" [class.admin-role]="selectedUser.role==='ADMIN'">{{ selectedUser.role }}</span></p>
+            </div>
+          </div>
+          <button class="btn btn-outline sm" (click)="clearUser()">← Back to Users</button>
+        </div>
+
+        <div class="alert success" *ngIf="successMessage">{{ successMessage }}</div>
+        <div class="alert error"   *ngIf="errorMessage">{{ errorMessage }}</div>
+
+        <div class="sub-tabs">
+          <button [class.active]="userTab==='family'" (click)="userTab='family'; closeForm()">👨‍👩‍👧 Family Members</button>
+          <button [class.active]="userTab==='pets'"   (click)="userTab='pets'; closeForm()">🐾 Pets</button>
+        </div>
+
+        <!-- ── FAMILY MEMBERS ── -->
+        <div *ngIf="userTab==='family'" class="sub-section">
+          <div class="sub-header">
+            <h4>Family Members</h4>
+            <button class="btn btn-primary sm" (click)="openFamilyForm()" *ngIf="!showForm">+ Add Member</button>
+          </div>
+
+          <div class="inline-form" *ngIf="showForm && formType==='family'">
+            <h5>{{ editingId ? 'Edit' : 'Add' }} Family Member</h5>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>First Name *</label>
+                  <input formControlName="firstName" placeholder="First name">
+                </div>
+                <div class="form-group">
+                  <label>Last Name *</label>
+                  <input formControlName="lastName" placeholder="Last name">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Relationship *</label>
+                  <select formControlName="relationship">
+                    <option value="">Select...</option>
+                    <option *ngFor="let r of relationships" [value]="r">{{ r }}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Date of Birth</label>
+                  <input type="date" formControlName="dateOfBirth">
+                </div>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary" [disabled]="loading">{{ loading ? 'Saving…' : (editingId ? 'Update' : 'Add') }}</button>
+                <button type="button" class="btn btn-outline" (click)="closeForm()">Cancel</button>
+              </div>
+            </form>
+          </div>
+
+          <table class="data-table" *ngIf="familyMembers.length; else noData">
+            <thead><tr><th>Name</th><th>Relationship</th><th>DOB</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr *ngFor="let m of familyMembers">
+                <td>{{ m.firstName }} {{ m.lastName }}</td>
+                <td>{{ m.relationship }}</td>
+                <td>{{ m.dateOfBirth || '—' }}</td>
+                <td class="action-cell">
+                  <button class="btn btn-primary sm" (click)="openFamilyForm(m)">Edit</button>
+                  <button class="btn btn-danger sm"  (click)="deleteFamily(m.id!)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <ng-template #noData><p class="empty-msg">No records found.</p></ng-template>
+        </div>
+
+        <!-- ── PETS ── -->
+        <div *ngIf="userTab==='pets'" class="sub-section">
+          <div class="sub-header">
+            <h4>Pets</h4>
+            <button class="btn btn-primary sm" (click)="openPetForm()" *ngIf="!showForm">+ Add Pet</button>
+          </div>
+
+          <div class="inline-form" *ngIf="showForm && formType==='pet'">
+            <h5>{{ editingId ? 'Edit' : 'Add' }} Pet</h5>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Pet Name *</label>
+                  <input formControlName="name" placeholder="Name">
+                </div>
+                <div class="form-group">
+                  <label>Species *</label>
+                  <select formControlName="species">
+                    <option value="">Select...</option>
+                    <option *ngFor="let s of speciesList" [value]="s">{{ s }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Breed</label>
+                  <input formControlName="breed" placeholder="Breed">
+                </div>
+                <div class="form-group">
+                  <label>Gender *</label>
+                  <select formControlName="gender">
+                    <option *ngFor="let g of genderList" [value]="g">{{ g }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Date of Birth</label>
+                  <input type="date" formControlName="dateOfBirth">
+                </div>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary" [disabled]="loading">{{ loading ? 'Saving…' : (editingId ? 'Update' : 'Add') }}</button>
+                <button type="button" class="btn btn-outline" (click)="closeForm()">Cancel</button>
+              </div>
+            </form>
+          </div>
+
+          <table class="data-table" *ngIf="pets.length; else noDataPet">
+            <thead><tr><th>Name</th><th>Species</th><th>Breed</th><th>Gender</th><th>DOB</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr *ngFor="let p of pets">
+                <td>{{ p.name }}</td>
+                <td>{{ p.species }}</td>
+                <td>{{ p.breed || '—' }}</td>
+                <td>{{ p.gender }}</td>
+                <td>{{ p.dateOfBirth || '—' }}</td>
+                <td class="action-cell">
+                  <button class="btn btn-primary sm" (click)="openPetForm(p)">Edit</button>
+                  <button class="btn btn-danger sm"  (click)="deletePet(p.id!)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <ng-template #noDataPet><p class="empty-msg">No pets found.</p></ng-template>
+        </div>
+
+      </div><!-- /user-panel -->
+    </section>
+
+    <!-- ══════════ FEEDBACK ══════════ -->
+    <section *ngIf="activeTab==='feedback'" class="tab-section">
+      <h2 class="section-title">Feedback & Support Tickets</h2>
+
+      <div class="search-bar">
+        <input type="text" placeholder="Search by name, email or message…" [(ngModel)]="feedbackSearch" (keyup.enter)="onFeedbackSearch()" class="search-input"/>
+        <select [(ngModel)]="feedbackStatusFilter" (change)="onFeedbackSearch()" class="filter-select">
+          <option value="">All Statuses</option>
+          <option value="OPEN">OPEN</option>
+          <option value="IN_PROGRESS">IN_PROGRESS</option>
+          <option value="CLOSED">CLOSED</option>
+        </select>
+        <select [(ngModel)]="feedbackCategoryFilter" (change)="onFeedbackSearch()" class="filter-select">
+          <option value="">All Categories</option>
+          <option value="FEEDBACK">FEEDBACK</option>
+          <option value="SUPPORT">SUPPORT</option>
+        </select>
+        <button class="btn btn-primary sm" (click)="onFeedbackSearch()">Search</button>
+      </div>
+      <p class="result-count">{{ feedbackTotal }} item(s) found</p>
+
+      <table class="data-table" *ngIf="feedbackList.length; else noFeedback">
+        <thead>
+          <tr><th>User</th><th>Category</th><th>Rating</th><th>Message</th><th>Status</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let f of feedbackList">
+            <td>{{ f.name }}</td>
+            <td>{{ f.category }}</td>
+            <td>{{ stars(f.rating) }}</td>
+            <td class="msg-cell">{{ f.message }}</td>
+            <td>
+              <select class="status-select" [value]="f.status" (change)="updateFeedbackStatus(f.id!, $any($event.target).value)">
+                <option *ngFor="let s of statusOptions" [value]="s">{{ s }}</option>
+              </select>
+            </td>
+            <td>
+              <button class="btn btn-danger sm" (click)="deleteFeedback(f.id!)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <ng-template #noFeedback><p class="empty-msg">No feedback found.</p></ng-template>
+
+      <div class="pagination" *ngIf="feedbackTotalPages > 1">
+        <button class="btn sm" (click)="feedbackPrevPage()" [disabled]="feedbackPage === 0">‹ Prev</button>
+        <span class="page-info">Page {{ feedbackPage + 1 }} of {{ feedbackTotalPages }}</span>
+        <button class="btn sm" (click)="feedbackNextPage()" [disabled]="feedbackPage >= feedbackTotalPages - 1">Next ›</button>
+      </div>
+    </section>
+
+  </main>
+</div>

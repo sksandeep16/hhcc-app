@@ -1,0 +1,21 @@
+{
+  "name": "hhcc-platform",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "bootstrap": "./scripts/bootstrap.sh || ./scripts/bootstrap.ps1",
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "test": "turbo run test",
+    "lint": "turbo run lint"
+  },
+  "devDependencies": {
+    "turbo": "^1.13.0"
+  },
+  "dependencies": {
+    "@stripe/stripe-js": "^9.0.1"
+  }
+}

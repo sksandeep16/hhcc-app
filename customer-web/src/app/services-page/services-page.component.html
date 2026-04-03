@@ -1,0 +1,73 @@
+<!-- ── NAVBAR ─────────────────────────────────────────────── -->
+<nav class="navbar">
+  <div class="nav-brand">
+    <span class="brand-cross">✚</span>
+    <span class="brand-name">CareApp</span>
+  </div>
+  <div class="nav-links">
+    <a routerLink="/home"     class="nav-link">Home</a>
+    <a routerLink="/services" class="nav-link active">Services</a>
+    <a routerLink="/feedback" class="nav-link">Support</a>
+    <a routerLink="/login"    class="btn btn-outline-nav">Sign In</a>
+    <a routerLink="/register" class="btn btn-primary-nav">Sign Up</a>
+  </div>
+</nav>
+
+<!-- ── PAGE ───────────────────────────────────────────────── -->
+<div class="page-wrapper">
+
+  <h1 class="page-title">Explore Our Services</h1>
+
+  <!-- Loading -->
+  @if (loading) {
+    <div class="state-msg">
+      <div class="spinner"></div>
+      <p>Loading services…</p>
+    </div>
+  }
+
+  <!-- Error -->
+  @if (error) {
+    <div class="state-msg error">{{ error }}</div>
+  }
+
+  <!-- Service cards -->
+  @if (!loading && !error) {
+    <div class="services-list">
+      @for (svc of services; track svc.id; let i = $index) {
+        <div class="service-card">
+
+          <!-- Card header row: icon + name -->
+          <div class="card-header-row">
+            <span class="svc-icon">{{ svc.icon }}</span>
+            <h2 class="svc-name">{{ svc.name }}</h2>
+          </div>
+
+          <!-- Thumbnail image / visual placeholder -->
+          <div class="svc-thumbnail" [ngStyle]="thumbStyle(i)">
+            <span class="thumb-icon">{{ svc.icon }}</span>
+          </div>
+
+          <!-- Description -->
+          <p class="svc-description">{{ svc.description }}</p>
+
+          <!-- Bullet points -->
+          @if (svc.bullets?.length) {
+            <ul class="bullet-list">
+              @for (b of svc.bullets; track b.id) {
+                <li>{{ b.bulletText }}</li>
+              }
+            </ul>
+          }
+
+        </div>
+      }
+    </div>
+  }
+
+  <!-- Back button -->
+  <div class="back-row">
+    <a routerLink="/home" class="btn-back">Back to Home</a>
+  </div>
+
+</div>

@@ -1,0 +1,82 @@
+<div class="card">
+  <div class="card-header">
+    <div class="brand-logo">
+      <span class="logo-cross">✚</span>
+      <span class="logo-name">CareApp</span>
+    </div>
+    <h2>Create Account</h2>
+    <p>Fill in the details below to register</p>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <!-- Username -->
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input
+        id="username"
+        type="text"
+        formControlName="username"
+        placeholder="Enter username"
+        [class.invalid]="username.invalid && username.touched"
+      />
+      @if (username.touched && username.hasError('required')) {
+        <span class="error">Username is required.</span>
+      } @else if (username.touched && username.hasError('minlength')) {
+        <span class="error">Minimum 3 characters required.</span>
+      }
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="Enter email"
+        [class.invalid]="email.invalid && email.touched"
+      />
+      @if (email.touched && email.hasError('required')) {
+        <span class="error">Email is required.</span>
+      } @else if (email.touched && email.hasError('email')) {
+        <span class="error">Enter a valid email address.</span>
+      }
+    </div>
+
+    <!-- Password -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        placeholder="Enter password"
+        [class.invalid]="password.invalid && password.touched"
+      />
+      @if (password.touched && password.hasError('required')) {
+        <span class="error">Password is required.</span>
+      } @else if (password.touched && password.hasError('minlength')) {
+        <span class="error">Minimum 6 characters required.</span>
+      }
+    </div>
+
+    <!-- Success / Error -->
+    @if (successMessage) {
+      <div class="alert success">{{ successMessage }}</div>
+    }
+    @if (errorMessage) {
+      <div class="alert error-alert">{{ errorMessage }}</div>
+    }
+
+    <!-- Submit -->
+    <button type="submit" [disabled]="loading">
+      {{ loading ? 'Registering...' : 'Register' }}
+    </button>
+
+  </form>
+
+  <div class="footer-link">
+    Already have an account? <a routerLink="/login">Sign in here</a>
+  </div>
+</div>

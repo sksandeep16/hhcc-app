@@ -1,0 +1,144 @@
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 28px rgba(25, 118, 210, 0.13);
+  padding: 44px 40px;
+  width: 100%;
+  max-width: 420px;
+  border: 1.5px solid #e1f0fb;
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+/* CareApp brand logo */
+.brand-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.logo-cross {
+  font-size: 1.6rem;
+  color: #e53935;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.logo-name {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #1565c0;
+}
+
+.card-header h2 {
+  font-size: 1.6rem;
+  color: #1a2a4a;
+  margin-bottom: 6px;
+}
+
+.card-header p {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #1976d2;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.15);
+}
+
+.form-group input.invalid {
+  border-color: #ef4444;
+}
+
+.error {
+  color: #ef4444;
+  font-size: 0.8rem;
+  margin-top: 4px;
+  display: block;
+}
+
+.alert {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  margin-bottom: 14px;
+}
+
+.alert.success {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #6ee7b7;
+}
+
+.alert.error-alert {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background: #1976d2;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 4px;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+  background: #1565c0;
+}
+
+button[type="submit"]:disabled {
+  background: #90caf9;
+  cursor: not-allowed;
+}
+
+.footer-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.footer-link a {
+  color: #1976d2;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-link a:hover {
+  text-decoration: underline;
+}

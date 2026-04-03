@@ -1,0 +1,1073 @@
+2026-04-01 00:01:24.719 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-04-01 00:01:24.738 INFO  [main] com.demo.DemoApplication - Starting DemoApplication using Java 25.0.1 with PID 93161 (/Users/sandeep/code/hhcc-app/backend-api/target/classes started by sandeep in /Users/sandeep/code/hhcc-app/backend-api)
+2026-04-01 00:01:24.739 DEBUG [main] com.demo.DemoApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-01 00:01:24.739 INFO  [main] com.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-01 00:01:24.949 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-01 00:01:24.969 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17 ms. Found 7 JPA repository interfaces.
+2026-04-01 00:01:25.128 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-01 00:01:25.132 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2026-04-01 00:01:25.132 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-01 00:01:25.132 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-01 00:01:25.156 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-01 00:01:25.156 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 406 ms
+2026-04-01 00:01:25.183 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-01 00:01:25.378 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@73ca34e7
+2026-04-01 00:01:25.378 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-01 00:01:25.405 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-01 00:01:25.425 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-01 00:01:25.434 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-01 00:01:25.507 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-01 00:01:25.812 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-01 00:01:25.821 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-01 00:01:25.886 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-01 00:01:26.187 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2026-04-01 00:01:26.194 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path ''
+2026-04-01 00:01:26.197 INFO  [main] com.demo.DemoApplication - Started DemoApplication in 1.621 seconds (process running for 1.718)
+2026-04-01 00:06:53.642 INFO  [http-nio-8081-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-01 00:06:53.643 INFO  [http-nio-8081-exec-4] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-04-01 00:06:53.646 INFO  [http-nio-8081-exec-4] o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2026-04-01 00:06:53.671 DEBUG [http-nio-8081-exec-3] com.demo.controller.PetController - GET /api/users/2/pets search='null' species='null'
+2026-04-01 00:06:53.671 DEBUG [http-nio-8081-exec-2] c.d.c.FamilyMemberController - GET /api/users/2/family-members search='null' relationship='null'
+2026-04-01 00:06:53.671 DEBUG [http-nio-8081-exec-3] com.demo.service.PetService - Fetching all pets for userId=2
+2026-04-01 00:06:53.671 DEBUG [http-nio-8081-exec-2] c.demo.service.FamilyMemberService - Fetching all family members for userId=2
+2026-04-01 00:06:53.714 DEBUG [http-nio-8081-exec-2] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        family_members 
+    WHERE
+        user_id = ?
+2026-04-01 00:06:53.714 DEBUG [http-nio-8081-exec-3] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        pets 
+    WHERE
+        user_id = ?
+2026-04-01 00:06:53.727 DEBUG [http-nio-8081-exec-1] org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.card_last4,
+        p1_0.created_at,
+        p1_0.method,
+        p1_0.receipt_url,
+        p1_0.status,
+        p1_0.transaction_id,
+        p1_0.user_id 
+    from
+        payments p1_0 
+    where
+        p1_0.user_id=?
+2026-04-01 00:10:19.115 INFO  [http-nio-8081-exec-8] com.demo.controller.UserController - POST /api/users/login username='jane_smith'
+2026-04-01 00:10:19.116 INFO  [http-nio-8081-exec-8] com.demo.service.UserService - Login attempt for username='jane_smith'
+2026-04-01 00:10:19.119 DEBUG [http-nio-8081-exec-8] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users 
+    WHERE
+        username = ? 
+    LIMIT
+        1
+2026-04-01 00:10:19.120 INFO  [http-nio-8081-exec-8] com.demo.service.UserService - Login successful for username='jane_smith'
+2026-04-01 00:10:19.120 INFO  [http-nio-8081-exec-8] com.demo.controller.UserController - Login success for username='jane_smith'
+2026-04-01 00:10:19.136 DEBUG [http-nio-8081-exec-9] c.d.c.FamilyMemberController - GET /api/users/2/family-members search='null' relationship='null'
+2026-04-01 00:10:19.136 DEBUG [http-nio-8081-exec-9] c.demo.service.FamilyMemberService - Fetching all family members for userId=2
+2026-04-01 00:10:19.136 DEBUG [http-nio-8081-exec-10] com.demo.controller.PetController - GET /api/users/2/pets search='null' species='null'
+2026-04-01 00:10:19.136 DEBUG [http-nio-8081-exec-10] com.demo.service.PetService - Fetching all pets for userId=2
+2026-04-01 00:10:19.137 DEBUG [http-nio-8081-exec-10] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        pets 
+    WHERE
+        user_id = ?
+2026-04-01 00:10:19.137 DEBUG [http-nio-8081-exec-9] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        family_members 
+    WHERE
+        user_id = ?
+2026-04-01 00:10:19.141 DEBUG [http-nio-8081-exec-4] org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.card_last4,
+        p1_0.created_at,
+        p1_0.method,
+        p1_0.receipt_url,
+        p1_0.status,
+        p1_0.transaction_id,
+        p1_0.user_id 
+    from
+        payments p1_0 
+    where
+        p1_0.user_id=?
+2026-04-01 00:13:15.123 INFO  [http-nio-8081-exec-5] com.demo.controller.UserController - POST /api/users/login username='jane_smith'
+2026-04-01 00:13:15.126 INFO  [http-nio-8081-exec-5] com.demo.service.UserService - Login attempt for username='jane_smith'
+2026-04-01 00:13:15.131 DEBUG [http-nio-8081-exec-5] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users 
+    WHERE
+        username = ? 
+    LIMIT
+        1
+2026-04-01 00:13:15.135 INFO  [http-nio-8081-exec-5] com.demo.service.UserService - Login successful for username='jane_smith'
+2026-04-01 00:13:15.135 INFO  [http-nio-8081-exec-5] com.demo.controller.UserController - Login success for username='jane_smith'
+2026-04-01 00:13:15.152 DEBUG [http-nio-8081-exec-7] com.demo.controller.PetController - GET /api/users/2/pets search='null' species='null'
+2026-04-01 00:13:15.153 DEBUG [http-nio-8081-exec-7] com.demo.service.PetService - Fetching all pets for userId=2
+2026-04-01 00:13:15.152 DEBUG [http-nio-8081-exec-6] c.d.c.FamilyMemberController - GET /api/users/2/family-members search='null' relationship='null'
+2026-04-01 00:13:15.153 DEBUG [http-nio-8081-exec-6] c.demo.service.FamilyMemberService - Fetching all family members for userId=2
+2026-04-01 00:13:15.154 DEBUG [http-nio-8081-exec-7] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        pets 
+    WHERE
+        user_id = ?
+2026-04-01 00:13:15.154 DEBUG [http-nio-8081-exec-6] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        family_members 
+    WHERE
+        user_id = ?
+2026-04-01 00:13:15.162 DEBUG [http-nio-8081-exec-10] org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.card_last4,
+        p1_0.created_at,
+        p1_0.method,
+        p1_0.receipt_url,
+        p1_0.status,
+        p1_0.transaction_id,
+        p1_0.user_id 
+    from
+        payments p1_0 
+    where
+        p1_0.user_id=?
+2026-04-01 00:14:35.235 INFO  [http-nio-8081-exec-3] com.demo.controller.UserController - POST /api/users/login username='jane_smith'
+2026-04-01 00:14:35.236 INFO  [http-nio-8081-exec-3] com.demo.service.UserService - Login attempt for username='jane_smith'
+2026-04-01 00:14:35.243 DEBUG [http-nio-8081-exec-3] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users 
+    WHERE
+        username = ? 
+    LIMIT
+        1
+2026-04-01 00:14:35.247 INFO  [http-nio-8081-exec-3] com.demo.service.UserService - Login successful for username='jane_smith'
+2026-04-01 00:14:35.247 INFO  [http-nio-8081-exec-3] com.demo.controller.UserController - Login success for username='jane_smith'
+2026-04-01 00:14:35.278 DEBUG [http-nio-8081-exec-2] c.d.c.FamilyMemberController - GET /api/users/2/family-members search='null' relationship='null'
+2026-04-01 00:14:35.278 DEBUG [http-nio-8081-exec-2] c.demo.service.FamilyMemberService - Fetching all family members for userId=2
+2026-04-01 00:14:35.279 DEBUG [http-nio-8081-exec-5] com.demo.controller.PetController - GET /api/users/2/pets search='null' species='null'
+2026-04-01 00:14:35.279 DEBUG [http-nio-8081-exec-5] com.demo.service.PetService - Fetching all pets for userId=2
+2026-04-01 00:14:35.279 DEBUG [http-nio-8081-exec-2] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        family_members 
+    WHERE
+        user_id = ?
+2026-04-01 00:14:35.279 DEBUG [http-nio-8081-exec-5] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        pets 
+    WHERE
+        user_id = ?
+2026-04-01 00:14:35.286 DEBUG [http-nio-8081-exec-6] org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.card_last4,
+        p1_0.created_at,
+        p1_0.method,
+        p1_0.receipt_url,
+        p1_0.status,
+        p1_0.transaction_id,
+        p1_0.user_id 
+    from
+        payments p1_0 
+    where
+        p1_0.user_id=?
+2026-04-01 00:15:13.759 INFO  [http-nio-8081-exec-9] com.demo.controller.UserController - POST /api/users/login username='jane_smith'
+2026-04-01 00:15:13.760 INFO  [http-nio-8081-exec-9] com.demo.service.UserService - Login attempt for username='jane_smith'
+2026-04-01 00:15:13.762 DEBUG [http-nio-8081-exec-9] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users 
+    WHERE
+        username = ? 
+    LIMIT
+        1
+2026-04-01 00:15:13.764 INFO  [http-nio-8081-exec-9] com.demo.service.UserService - Login successful for username='jane_smith'
+2026-04-01 00:15:13.764 INFO  [http-nio-8081-exec-9] com.demo.controller.UserController - Login success for username='jane_smith'
+2026-04-01 00:15:13.785 DEBUG [http-nio-8081-exec-1] c.d.c.FamilyMemberController - GET /api/users/2/family-members search='null' relationship='null'
+2026-04-01 00:15:13.785 DEBUG [http-nio-8081-exec-1] c.demo.service.FamilyMemberService - Fetching all family members for userId=2
+2026-04-01 00:15:13.786 DEBUG [http-nio-8081-exec-1] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        family_members 
+    WHERE
+        user_id = ?
+2026-04-01 00:15:13.787 DEBUG [http-nio-8081-exec-4] com.demo.controller.PetController - GET /api/users/2/pets search='null' species='null'
+2026-04-01 00:15:13.787 DEBUG [http-nio-8081-exec-4] com.demo.service.PetService - Fetching all pets for userId=2
+2026-04-01 00:15:13.787 DEBUG [http-nio-8081-exec-4] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        pets 
+    WHERE
+        user_id = ?
+2026-04-01 00:15:13.791 DEBUG [http-nio-8081-exec-3] org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.card_last4,
+        p1_0.created_at,
+        p1_0.method,
+        p1_0.receipt_url,
+        p1_0.status,
+        p1_0.transaction_id,
+        p1_0.user_id 
+    from
+        payments p1_0 
+    where
+        p1_0.user_id=?
+2026-04-01 00:19:21.190 DEBUG [http-nio-8081-exec-6] c.d.c.FamilyMemberController - GET /api/users/2/family-members search='null' relationship='null'
+2026-04-01 00:19:21.190 DEBUG [http-nio-8081-exec-10] com.demo.controller.PetController - GET /api/users/2/pets search='null' species='null'
+2026-04-01 00:19:21.191 DEBUG [http-nio-8081-exec-6] c.demo.service.FamilyMemberService - Fetching all family members for userId=2
+2026-04-01 00:19:21.191 DEBUG [http-nio-8081-exec-10] com.demo.service.PetService - Fetching all pets for userId=2
+2026-04-01 00:19:21.195 DEBUG [http-nio-8081-exec-10] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        pets 
+    WHERE
+        user_id = ?
+2026-04-01 00:19:21.195 DEBUG [http-nio-8081-exec-6] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        family_members 
+    WHERE
+        user_id = ?
+2026-04-01 00:37:00.000 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=17m4s380ms).
+2026-04-01 00:55:13.604 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=18m13s605ms).
+2026-04-01 01:45:34.718 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=50m21s113ms).
+2026-04-01 02:53:54.501 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h7m19s769ms).
+2026-04-01 03:59:03.333 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h3m38s804ms).
+2026-04-01 04:16:20.629 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16m47s282ms).
+2026-04-01 04:44:39.338 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=27m48s693ms).
+2026-04-01 05:03:27.442 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=18m18s95ms).
+2026-04-01 05:07:06.946 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m39s505ms).
+2026-04-01 05:40:51.764 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=33m44s818ms).
+2026-04-01 06:00:22.120 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=19m30s355ms).
+2026-04-01 06:19:50.101 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=18m19s801ms).
+2026-04-01 07:00:18.228 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=39m23s252ms).
+2026-04-01 07:18:30.192 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=18m11s962ms).
+2026-04-01 07:34:49.879 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16m19s688ms).
+2026-04-01 07:54:01.651 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=18m41s755ms).
+2026-04-01 08:00:00.650 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m59s).
+2026-04-01 08:32:35.164 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=32m4s310ms).
+2026-04-01 08:49:56.182 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16m51s10ms).
+2026-04-01 08:55:48.924 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m52s743ms).
+2026-04-01 09:29:58.460 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=33m39s525ms).
+2026-04-01 09:47:55.163 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=17m26s691ms).
+2026-04-01 10:03:28.419 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m30s948ms).
+2026-04-01 10:37:23.699 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=33m55s280ms).
+2026-04-01 11:10:33.042 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=33m9s343ms).
+2026-04-01 11:29:32.494 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=17m59s429ms).
+2026-04-01 12:20:55.828 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=50m53s328ms).
+2026-04-01 12:30:32.563 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9m6s723ms).
+2026-04-01 13:22:26.910 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=51m24s344ms).
+2026-04-01 13:31:32.694 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m35s770ms).
+2026-04-01 13:35:37.751 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m58s783ms).
+2026-04-01 13:53:53.538 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=18m15s786ms).
+2026-04-01 14:04:53.813 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10m30s267ms).
+2026-04-01 14:12:25.494 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m31s681ms).
+2026-04-01 14:29:49.406 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16m53s911ms).
+2026-04-01 14:32:36.041 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m16s632ms).
+2026-04-01 15:24:53.389 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=52m17s348ms).
+2026-04-01 15:33:47.144 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m53s755ms).
+2026-04-01 15:59:41.740 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=24m39s987ms).
+2026-04-01 16:27:36.480 INFO  [main] com.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 21.0.10 with PID 17668 (started by sandeep in /Users/sandeep/code/hhcc-app/backend-api)
+2026-04-01 16:27:36.481 DEBUG [main] com.demo.DemoApplicationTests - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-01 16:27:36.481 INFO  [main] com.demo.DemoApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2026-04-01 16:27:36.657 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-01 16:27:36.673 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 13 ms. Found 7 JPA repository interfaces.
+2026-04-01 16:27:36.784 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-01 16:27:36.984 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@6d3a56ea
+2026-04-01 16:27:36.985 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-01 16:27:37.020 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-01 16:27:37.042 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-01 16:27:37.053 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-01 16:27:37.086 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-01 16:27:37.378 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-01 16:27:37.388 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-01 16:27:37.455 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-01 16:27:37.791 INFO  [main] com.demo.DemoApplicationTests - Started DemoApplicationTests in 1.41 seconds (process running for 2.729)
+2026-04-01 16:27:37.799 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-01 16:27:37.800 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-01 16:27:37.801 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-01 16:27:55.480 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-04-01 16:27:55.491 INFO  [main] com.demo.DemoApplication - Starting DemoApplication using Java 21.0.10 with PID 18445 (/Users/sandeep/code/hhcc-app/backend-api/target/classes started by sandeep in /Users/sandeep/code/hhcc-app/backend-api)
+2026-04-01 16:27:55.491 DEBUG [main] com.demo.DemoApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-01 16:27:55.491 INFO  [main] com.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-01 16:27:55.680 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-01 16:27:55.695 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 13 ms. Found 7 JPA repository interfaces.
+2026-04-01 16:27:55.826 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-01 16:27:55.829 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2026-04-01 16:27:55.830 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-01 16:27:55.830 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-01 16:27:55.846 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-01 16:27:55.846 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 342 ms
+2026-04-01 16:27:55.872 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-01 16:27:56.070 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@6e1ae763
+2026-04-01 16:27:56.071 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-01 16:27:56.097 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-01 16:27:56.110 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-01 16:27:56.120 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-01 16:27:56.176 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-01 16:27:56.480 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-01 16:27:56.490 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-01 16:27:56.550 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-01 16:27:56.864 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2026-04-01 16:27:56.871 WARN  [main] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-04-01 16:27:56.871 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-01 16:27:56.872 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-01 16:27:56.872 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-01 16:27:56.877 INFO  [main] o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-04-01 16:27:56.880 ERROR [main] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+
+2026-04-01 16:28:20.068 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-04-01 16:28:20.082 INFO  [main] com.demo.DemoApplication - Starting DemoApplication using Java 21.0.10 with PID 19506 (/Users/sandeep/code/hhcc-app/backend-api/target/classes started by sandeep in /Users/sandeep/code/hhcc-app/backend-api)
+2026-04-01 16:28:20.083 DEBUG [main] com.demo.DemoApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-01 16:28:20.083 INFO  [main] com.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-01 16:28:20.304 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-01 16:28:20.322 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 15 ms. Found 7 JPA repository interfaces.
+2026-04-01 16:28:20.470 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-01 16:28:20.473 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2026-04-01 16:28:20.474 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-01 16:28:20.474 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-01 16:28:20.495 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-01 16:28:20.495 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 399 ms
+2026-04-01 16:28:20.525 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-01 16:28:20.727 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@1a9ec80e
+2026-04-01 16:28:20.727 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-01 16:28:20.760 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-01 16:28:20.785 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-01 16:28:20.798 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-01 16:28:20.878 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-01 16:28:21.207 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-01 16:28:21.217 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-01 16:28:21.282 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-01 16:28:21.604 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2026-04-01 16:28:21.614 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path ''
+2026-04-01 16:28:21.617 INFO  [main] com.demo.DemoApplication - Started DemoApplication in 1.686 seconds (process running for 1.796)
+2026-04-01 16:34:33.339 INFO  [main] com.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 21.0.10 with PID 21785 (started by sandeep in /Users/sandeep/code/hhcc-app/backend-api)
+2026-04-01 16:34:33.340 DEBUG [main] com.demo.DemoApplicationTests - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-01 16:34:33.340 INFO  [main] com.demo.DemoApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2026-04-01 16:34:33.505 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-01 16:34:33.523 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 15 ms. Found 7 JPA repository interfaces.
+2026-04-01 16:34:33.626 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-01 16:34:33.817 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@36def543
+2026-04-01 16:34:33.818 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-01 16:34:33.856 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-01 16:34:33.882 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-01 16:34:33.891 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-01 16:34:33.923 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-01 16:34:34.195 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-01 16:34:34.205 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-01 16:34:34.273 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-01 16:34:34.590 INFO  [main] com.demo.DemoApplicationTests - Started DemoApplicationTests in 1.345 seconds (process running for 2.565)
+2026-04-01 16:34:34.599 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-01 16:34:34.600 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-01 16:34:34.601 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-01 16:34:57.117 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-04-01 16:34:57.128 INFO  [main] com.demo.DemoApplication - Starting DemoApplication using Java 21.0.10 with PID 22148 (/Users/sandeep/code/hhcc-app/backend-api/target/classes started by sandeep in /Users/sandeep/code/hhcc-app/backend-api)
+2026-04-01 16:34:57.129 DEBUG [main] com.demo.DemoApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-01 16:34:57.129 INFO  [main] com.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-01 16:34:57.304 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-01 16:34:57.321 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 14 ms. Found 7 JPA repository interfaces.
+2026-04-01 16:34:57.446 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-01 16:34:57.449 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2026-04-01 16:34:57.449 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-01 16:34:57.449 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-01 16:34:57.463 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-01 16:34:57.463 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 322 ms
+2026-04-01 16:34:57.491 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-01 16:34:57.691 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@6e1ae763
+2026-04-01 16:34:57.692 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-01 16:34:57.725 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-01 16:34:57.740 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-01 16:34:57.750 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-01 16:34:57.803 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-01 16:34:58.079 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-01 16:34:58.088 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-01 16:34:58.146 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-01 16:34:58.436 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2026-04-01 16:34:58.445 WARN  [main] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-04-01 16:34:58.446 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-01 16:34:58.446 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-01 16:34:58.447 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-01 16:34:58.451 INFO  [main] o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-04-01 16:34:58.454 ERROR [main] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+
+2026-04-01 16:36:50.463 INFO  [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-01 16:36:50.464 INFO  [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-04-01 16:36:50.467 INFO  [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2026-04-01 16:36:50.506 INFO  [http-nio-8081-exec-2] com.demo.controller.UserController - POST /api/users/login username='jane_smith'
+2026-04-01 16:36:50.506 INFO  [http-nio-8081-exec-2] com.demo.service.UserService - Login attempt for username='jane_smith'
+2026-04-01 16:36:50.535 DEBUG [http-nio-8081-exec-2] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users 
+    WHERE
+        username = ? 
+    LIMIT
+        1
+2026-04-01 16:36:50.550 INFO  [http-nio-8081-exec-2] com.demo.service.UserService - Login successful for username='jane_smith'
+2026-04-01 16:36:50.550 INFO  [http-nio-8081-exec-2] com.demo.controller.UserController - Login success for username='jane_smith'
+2026-04-01 16:36:50.573 DEBUG [http-nio-8081-exec-4] com.demo.controller.PetController - GET /api/users/2/pets search='null' species='null'
+2026-04-01 16:36:50.573 DEBUG [http-nio-8081-exec-4] com.demo.service.PetService - Fetching all pets for userId=2
+2026-04-01 16:36:50.573 DEBUG [http-nio-8081-exec-3] c.d.c.FamilyMemberController - GET /api/users/2/family-members search='null' relationship='null'
+2026-04-01 16:36:50.573 DEBUG [http-nio-8081-exec-3] c.demo.service.FamilyMemberService - Fetching all family members for userId=2
+2026-04-01 16:36:50.574 DEBUG [http-nio-8081-exec-3] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        family_members 
+    WHERE
+        user_id = ?
+2026-04-01 16:36:50.574 DEBUG [http-nio-8081-exec-4] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        pets 
+    WHERE
+        user_id = ?
+2026-04-01 16:36:50.600 DEBUG [http-nio-8081-exec-5] org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.card_last4,
+        p1_0.created_at,
+        p1_0.method,
+        p1_0.receipt_url,
+        p1_0.status,
+        p1_0.transaction_id,
+        p1_0.user_id 
+    from
+        payments p1_0 
+    where
+        p1_0.user_id=?
+2026-04-01 16:40:46.344 DEBUG [http-nio-8081-exec-9] com.demo.controller.PetController - GET /api/users/2/pets search='null' species='null'
+2026-04-01 16:40:46.344 DEBUG [http-nio-8081-exec-10] c.d.c.FamilyMemberController - GET /api/users/2/family-members search='null' relationship='null'
+2026-04-01 16:40:46.346 DEBUG [http-nio-8081-exec-9] com.demo.service.PetService - Fetching all pets for userId=2
+2026-04-01 16:40:46.346 DEBUG [http-nio-8081-exec-10] c.demo.service.FamilyMemberService - Fetching all family members for userId=2
+2026-04-01 16:40:46.350 DEBUG [http-nio-8081-exec-10] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        family_members 
+    WHERE
+        user_id = ?
+2026-04-01 16:40:46.350 DEBUG [http-nio-8081-exec-9] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        pets 
+    WHERE
+        user_id = ?
+2026-04-01 16:40:46.353 DEBUG [http-nio-8081-exec-1] org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.card_last4,
+        p1_0.created_at,
+        p1_0.method,
+        p1_0.receipt_url,
+        p1_0.status,
+        p1_0.transaction_id,
+        p1_0.user_id 
+    from
+        payments p1_0 
+    where
+        p1_0.user_id=?
+2026-04-01 16:47:48.202 DEBUG [http-nio-8081-exec-6] org.hibernate.SQL - 
+    insert 
+    into
+        payments
+        (amount, card_last4, created_at, method, receipt_url, status, transaction_id, user_id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?)
+2026-04-01 16:47:48.208 DEBUG [http-nio-8081-exec-6] org.hibernate.SQL - 
+    select
+        last_insert_rowid()
+2026-04-01 16:47:48.215 DEBUG [http-nio-8081-exec-6] com.demo.service.UserService - Fetching user by id=2
+2026-04-01 16:47:48.220 DEBUG [http-nio-8081-exec-6] org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-04-01 16:47:48.221 INFO  [http-nio-8081-exec-6] c.demo.controller.PaymentController - [DEBUG] Payment to save: Payment(id=1, userId=2, amount=100.0, method=CREDIT_CARD, status=SUCCESS, cardLast4=umar, receiptUrl=null, createdAt=2026-04-01 16:47:48, transactionId=f0b95dbf-782f-4a83-9685-630c61f6ed4b)
+2026-04-01 16:47:53.308 DEBUG [http-nio-8081-exec-5] c.d.c.FamilyMemberController - GET /api/users/2/family-members search='null' relationship='null'
+2026-04-01 16:47:53.308 DEBUG [http-nio-8081-exec-8] com.demo.controller.PetController - GET /api/users/2/pets search='null' species='null'
+2026-04-01 16:47:53.309 DEBUG [http-nio-8081-exec-5] c.demo.service.FamilyMemberService - Fetching all family members for userId=2
+2026-04-01 16:47:53.309 DEBUG [http-nio-8081-exec-8] com.demo.service.PetService - Fetching all pets for userId=2
+2026-04-01 16:47:53.310 DEBUG [http-nio-8081-exec-8] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        pets 
+    WHERE
+        user_id = ?
+2026-04-01 16:47:53.310 DEBUG [http-nio-8081-exec-5] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        family_members 
+    WHERE
+        user_id = ?
+2026-04-01 16:47:53.311 DEBUG [http-nio-8081-exec-7] org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.card_last4,
+        p1_0.created_at,
+        p1_0.method,
+        p1_0.receipt_url,
+        p1_0.status,
+        p1_0.transaction_id,
+        p1_0.user_id 
+    from
+        payments p1_0 
+    where
+        p1_0.user_id=?
+2026-04-01 16:56:50.315 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-01 16:56:50.321 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-01 16:56:50.324 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-01 17:13:30.743 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-04-01 17:13:30.759 INFO  [main] com.demo.DemoApplication - Starting DemoApplication using Java 21.0.10 with PID 34915 (/Users/sandeep/code/hhcc-app/backend-api/target/classes started by sandeep in /Users/sandeep/code/hhcc-app/backend-api)
+2026-04-01 17:13:30.759 DEBUG [main] com.demo.DemoApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-01 17:13:30.759 INFO  [main] com.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-01 17:13:30.986 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-01 17:13:31.004 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 15 ms. Found 7 JPA repository interfaces.
+2026-04-01 17:13:31.152 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-01 17:13:31.155 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2026-04-01 17:13:31.156 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-01 17:13:31.156 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-01 17:13:31.175 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-01 17:13:31.175 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 402 ms
+2026-04-01 17:13:31.206 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-01 17:13:31.404 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@1a9ec80e
+2026-04-01 17:13:31.405 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-01 17:13:31.434 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-01 17:13:31.455 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-01 17:13:31.465 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-01 17:13:31.543 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-01 17:13:31.884 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-01 17:13:31.894 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-01 17:13:31.958 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-01 17:13:32.277 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2026-04-01 17:13:32.286 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path ''
+2026-04-01 17:13:32.289 INFO  [main] com.demo.DemoApplication - Started DemoApplication in 1.678 seconds (process running for 1.779)
+2026-04-01 17:14:59.330 INFO  [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-01 17:14:59.330 INFO  [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-04-01 17:14:59.333 INFO  [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2026-04-01 17:19:15.653 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-04-01 17:19:15.665 INFO  [main] com.demo.DemoApplication - Starting DemoApplication using Java 21.0.10 with PID 39371 (/Users/sandeep/code/hhcc-app/backend-api/target/classes started by sandeep in /Users/sandeep/code/hhcc-app/backend-api)
+2026-04-01 17:19:15.665 DEBUG [main] com.demo.DemoApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-01 17:19:15.665 INFO  [main] com.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-01 17:19:15.848 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-01 17:19:15.863 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 13 ms. Found 7 JPA repository interfaces.
+2026-04-01 17:19:15.989 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-01 17:19:15.992 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2026-04-01 17:19:15.992 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-01 17:19:15.993 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-01 17:19:16.008 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-01 17:19:16.008 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 331 ms
+2026-04-01 17:19:16.033 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-01 17:19:16.231 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@6e1ae763
+2026-04-01 17:19:16.232 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-01 17:19:16.264 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-01 17:19:16.278 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-01 17:19:16.288 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-01 17:19:16.341 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-01 17:19:16.628 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-01 17:19:16.638 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-01 17:19:16.693 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-01 17:19:16.995 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2026-04-01 17:19:17.002 WARN  [main] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-04-01 17:19:17.003 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-01 17:19:17.003 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-01 17:19:17.004 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-01 17:19:17.008 INFO  [main] o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-04-01 17:19:17.012 ERROR [main] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+
+2026-04-01 17:19:53.457 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-04-01 17:19:53.468 INFO  [main] com.demo.DemoApplication - Starting DemoApplication using Java 21.0.10 with PID 40334 (/Users/sandeep/code/hhcc-app/backend-api/target/classes started by sandeep in /Users/sandeep/code/hhcc-app/backend-api)
+2026-04-01 17:19:53.468 DEBUG [main] com.demo.DemoApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-01 17:19:53.469 INFO  [main] com.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-01 17:19:53.649 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-01 17:19:53.664 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 13 ms. Found 7 JPA repository interfaces.
+2026-04-01 17:19:53.789 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-01 17:19:53.792 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2026-04-01 17:19:53.792 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-01 17:19:53.792 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-01 17:19:53.808 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-01 17:19:53.808 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 328 ms
+2026-04-01 17:19:53.834 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-01 17:19:54.056 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@7ce29a2d
+2026-04-01 17:19:54.057 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-01 17:19:54.085 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-01 17:19:54.101 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-01 17:19:54.111 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-01 17:19:54.166 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-01 17:19:54.447 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-01 17:19:54.456 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-01 17:19:54.513 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-01 17:19:54.815 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2026-04-01 17:19:54.824 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path ''
+2026-04-01 17:19:54.827 INFO  [main] com.demo.DemoApplication - Started DemoApplication in 1.483 seconds (process running for 1.568)
+2026-04-01 17:20:10.266 INFO  [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-01 17:20:10.267 INFO  [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-04-01 17:20:10.268 INFO  [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-04-01 17:20:10.305 INFO  [http-nio-8081-exec-1] com.demo.controller.UserController - POST /api/users/login username='emily_clark'
+2026-04-01 17:20:10.305 INFO  [http-nio-8081-exec-1] com.demo.service.UserService - Login attempt for username='emily_clark'
+2026-04-01 17:20:10.328 DEBUG [http-nio-8081-exec-1] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users 
+    WHERE
+        username = ? 
+    LIMIT
+        1
+2026-04-01 17:20:10.337 INFO  [http-nio-8081-exec-1] com.demo.service.UserService - Login successful for username='emily_clark'
+2026-04-01 17:20:10.337 INFO  [http-nio-8081-exec-1] com.demo.controller.UserController - Login success for username='emily_clark'
+2026-04-01 17:20:10.688 DEBUG [http-nio-8081-exec-2] c.d.c.FamilyMemberController - GET /api/users/4/family-members search='null' relationship='null'
+2026-04-01 17:20:10.688 DEBUG [http-nio-8081-exec-2] c.demo.service.FamilyMemberService - Fetching all family members for userId=4
+2026-04-01 17:20:10.689 DEBUG [http-nio-8081-exec-2] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        family_members 
+    WHERE
+        user_id = ?
+2026-04-01 17:20:10.693 DEBUG [http-nio-8081-exec-3] com.demo.controller.PetController - GET /api/users/4/pets search='null' species='null'
+2026-04-01 17:20:10.693 DEBUG [http-nio-8081-exec-3] com.demo.service.PetService - Fetching all pets for userId=4
+2026-04-01 17:20:10.694 DEBUG [http-nio-8081-exec-3] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        pets 
+    WHERE
+        user_id = ?
+2026-04-01 17:20:10.733 DEBUG [http-nio-8081-exec-4] org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.card_last4,
+        p1_0.created_at,
+        p1_0.method,
+        p1_0.receipt_url,
+        p1_0.status,
+        p1_0.transaction_id,
+        p1_0.user_id 
+    from
+        payments p1_0 
+    where
+        p1_0.user_id=?
+2026-04-01 17:38:08.768 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-01 17:38:08.775 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-01 17:38:08.780 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-01 17:38:56.076 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-04-01 17:38:56.089 INFO  [main] com.demo.DemoApplication - Starting DemoApplication using Java 25.0.1 with PID 44869 (/Users/sandeep/code/hhcc-app/backend-api/target/classes started by sandeep in /Users/sandeep/code/hhcc-app/backend-api)
+2026-04-01 17:38:56.089 DEBUG [main] com.demo.DemoApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-01 17:38:56.089 INFO  [main] com.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-01 17:38:56.298 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-01 17:38:56.316 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 15 ms. Found 7 JPA repository interfaces.
+2026-04-01 17:38:56.463 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-01 17:38:56.466 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2026-04-01 17:38:56.467 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-01 17:38:56.467 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-01 17:38:56.485 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-01 17:38:56.486 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 380 ms
+2026-04-01 17:38:56.513 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-01 17:38:56.706 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@1d15c0a1
+2026-04-01 17:38:56.706 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-01 17:38:56.748 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-01 17:38:56.770 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-01 17:38:56.780 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-01 17:38:56.856 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-01 17:38:57.159 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-01 17:38:57.171 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-01 17:38:57.233 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-01 17:38:57.530 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2026-04-01 17:38:57.539 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path ''
+2026-04-01 17:38:57.542 INFO  [main] com.demo.DemoApplication - Started DemoApplication in 1.603 seconds (process running for 1.699)
+2026-04-01 17:54:07.093 INFO  [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-01 17:54:07.094 INFO  [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-04-01 17:54:07.096 INFO  [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2026-04-01 17:54:07.147 INFO  [http-nio-8081-exec-1] com.demo.controller.UserController - POST /api/users/login username='emily_clark'
+2026-04-01 17:54:07.147 INFO  [http-nio-8081-exec-1] com.demo.service.UserService - Login attempt for username='emily_clark'
+2026-04-01 17:54:07.179 DEBUG [http-nio-8081-exec-1] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users 
+    WHERE
+        username = ? 
+    LIMIT
+        1
+2026-04-01 17:54:07.194 INFO  [http-nio-8081-exec-1] com.demo.service.UserService - Login successful for username='emily_clark'
+2026-04-01 17:54:07.194 INFO  [http-nio-8081-exec-1] com.demo.controller.UserController - Login success for username='emily_clark'
+2026-04-01 17:54:07.534 DEBUG [http-nio-8081-exec-2] c.d.c.FamilyMemberController - GET /api/users/4/family-members search='null' relationship='null'
+2026-04-01 17:54:07.535 DEBUG [http-nio-8081-exec-2] c.demo.service.FamilyMemberService - Fetching all family members for userId=4
+2026-04-01 17:54:07.536 DEBUG [http-nio-8081-exec-2] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        family_members 
+    WHERE
+        user_id = ?
+2026-04-01 17:54:07.537 DEBUG [http-nio-8081-exec-3] com.demo.controller.PetController - GET /api/users/4/pets search='null' species='null'
+2026-04-01 17:54:07.537 DEBUG [http-nio-8081-exec-3] com.demo.service.PetService - Fetching all pets for userId=4
+2026-04-01 17:54:07.539 DEBUG [http-nio-8081-exec-3] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        pets 
+    WHERE
+        user_id = ?
+2026-04-01 17:54:07.586 DEBUG [http-nio-8081-exec-4] org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.card_last4,
+        p1_0.created_at,
+        p1_0.method,
+        p1_0.receipt_url,
+        p1_0.status,
+        p1_0.transaction_id,
+        p1_0.user_id 
+    from
+        payments p1_0 
+    where
+        p1_0.user_id=?
+2026-04-01 17:55:25.240 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-01 17:55:25.246 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-01 17:55:25.248 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-01 22:43:58.919 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-04-01 22:43:58.934 INFO  [main] com.demo.DemoApplication - Starting DemoApplication using Java 25.0.1 with PID 69967 (/Users/sandeep/code/hhcc-app/backend-api/target/classes started by sandeep in /Users/sandeep/code/hhcc-app/backend-api)
+2026-04-01 22:43:58.934 DEBUG [main] com.demo.DemoApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-01 22:43:58.934 INFO  [main] com.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-01 22:43:59.142 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-01 22:43:59.163 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 18 ms. Found 7 JPA repository interfaces.
+2026-04-01 22:43:59.305 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-01 22:43:59.308 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2026-04-01 22:43:59.309 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-01 22:43:59.309 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-01 22:43:59.327 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-01 22:43:59.327 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 378 ms
+2026-04-01 22:43:59.354 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-01 22:43:59.548 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@4e140497
+2026-04-01 22:43:59.549 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-01 22:43:59.586 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-01 22:43:59.607 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-01 22:43:59.618 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-01 22:43:59.696 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-01 22:44:00.005 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-01 22:44:00.016 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-01 22:44:00.079 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-01 22:44:00.377 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2026-04-01 22:44:00.386 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path ''
+2026-04-01 22:44:00.389 INFO  [main] com.demo.DemoApplication - Started DemoApplication in 1.607 seconds (process running for 1.7)
+2026-04-01 22:46:48.512 INFO  [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-01 22:46:48.513 INFO  [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-04-01 22:46:48.515 INFO  [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2026-04-01 22:46:48.561 INFO  [http-nio-8081-exec-1] com.demo.controller.UserController - POST /api/users/login username='john_doe'
+2026-04-01 22:46:48.561 INFO  [http-nio-8081-exec-1] com.demo.service.UserService - Login attempt for username='john_doe'
+2026-04-01 22:46:48.593 DEBUG [http-nio-8081-exec-1] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        users 
+    WHERE
+        username = ? 
+    LIMIT
+        1
+2026-04-01 22:46:48.605 INFO  [http-nio-8081-exec-1] com.demo.service.UserService - Login successful for username='john_doe'
+2026-04-01 22:46:48.605 INFO  [http-nio-8081-exec-1] com.demo.controller.UserController - Login success for username='john_doe'
+2026-04-01 22:46:48.630 DEBUG [http-nio-8081-exec-4] com.demo.controller.PetController - GET /api/users/1/pets search='null' species='null'
+2026-04-01 22:46:48.630 DEBUG [http-nio-8081-exec-2] c.d.c.FamilyMemberController - GET /api/users/1/family-members search='null' relationship='null'
+2026-04-01 22:46:48.630 DEBUG [http-nio-8081-exec-4] com.demo.service.PetService - Fetching all pets for userId=1
+2026-04-01 22:46:48.630 DEBUG [http-nio-8081-exec-2] c.demo.service.FamilyMemberService - Fetching all family members for userId=1
+2026-04-01 22:46:48.631 DEBUG [http-nio-8081-exec-4] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        pets 
+    WHERE
+        user_id = ?
+2026-04-01 22:46:48.631 DEBUG [http-nio-8081-exec-2] org.hibernate.SQL - 
+    SELECT
+        * 
+    FROM
+        family_members 
+    WHERE
+        user_id = ?
+2026-04-01 22:46:48.659 DEBUG [http-nio-8081-exec-5] org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.card_last4,
+        p1_0.created_at,
+        p1_0.method,
+        p1_0.receipt_url,
+        p1_0.status,
+        p1_0.transaction_id,
+        p1_0.user_id 
+    from
+        payments p1_0 
+    where
+        p1_0.user_id=?
+2026-04-01 22:47:10.601 ERROR [http-nio-8081-exec-6] c.demo.controller.PaymentController - Card payment failed
+com.stripe.exception.InvalidRequestException: This PaymentIntent is configured to accept payment methods enabled in your Dashboard. Because some of these payment methods might redirect your customer off of your page, you must provide a `return_url`. If you don't want to accept redirect-based payment methods, set `automatic_payment_methods[enabled]` to `true` and `automatic_payment_methods[allow_redirects]` to `never` when creating Setup Intents and Payment Intents.; request-id: req_p7X7objI8ZZ4bx
+	at com.stripe.net.LiveStripeResponseGetter.handleApiError(LiveStripeResponseGetter.java:182)
+	at com.stripe.net.LiveStripeResponseGetter.handleError(LiveStripeResponseGetter.java:143)
+	at com.stripe.net.LiveStripeResponseGetter.request(LiveStripeResponseGetter.java:67)
+	at com.stripe.model.PaymentIntent.create(PaymentIntent.java:1048)
+	at com.stripe.model.PaymentIntent.create(PaymentIntent.java:1027)
+	at com.demo.controller.PaymentController.payWithCard(PaymentController.java:153)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:925)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:830)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-04-01 22:49:50.081 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-01 22:49:50.086 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-01 22:49:50.089 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-01 22:50:18.707 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-04-01 22:50:18.719 INFO  [main] com.demo.DemoApplication - Starting DemoApplication using Java 25.0.1 with PID 71834 (/Users/sandeep/code/hhcc-app/backend-api/target/classes started by sandeep in /Users/sandeep/code/hhcc-app/backend-api)
+2026-04-01 22:50:18.720 DEBUG [main] com.demo.DemoApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-01 22:50:18.720 INFO  [main] com.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-01 22:50:18.933 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-01 22:50:18.957 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 21 ms. Found 7 JPA repository interfaces.
+2026-04-01 22:50:19.102 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-01 22:50:19.105 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2026-04-01 22:50:19.106 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-01 22:50:19.106 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-01 22:50:19.124 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-01 22:50:19.124 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 388 ms
+2026-04-01 22:50:19.152 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-01 22:50:19.355 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@14d25b6e
+2026-04-01 22:50:19.355 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-01 22:50:19.395 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-01 22:50:19.416 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-01 22:50:19.427 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-01 22:50:19.502 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-01 22:50:19.803 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-01 22:50:19.816 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-01 22:50:19.903 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-01 22:50:20.199 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2026-04-01 22:50:20.208 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path ''
+2026-04-01 22:50:20.211 INFO  [main] com.demo.DemoApplication - Started DemoApplication in 1.646 seconds (process running for 1.747)
+2026-04-01 22:50:28.644 INFO  [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-01 22:50:28.644 INFO  [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-04-01 22:50:28.646 INFO  [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2026-04-01 22:50:29.379 ERROR [http-nio-8081-exec-1] c.demo.controller.PaymentController - Card payment failed
+com.stripe.exception.InvalidRequestException: You may only specify one of these parameters: automatic_payment_methods, confirmation_method.; request-id: req_M56Uf3RYU5r3yY
+	at com.stripe.net.LiveStripeResponseGetter.handleApiError(LiveStripeResponseGetter.java:182)
+	at com.stripe.net.LiveStripeResponseGetter.handleError(LiveStripeResponseGetter.java:143)
+	at com.stripe.net.LiveStripeResponseGetter.request(LiveStripeResponseGetter.java:67)
+	at com.stripe.model.PaymentIntent.create(PaymentIntent.java:1048)
+	at com.stripe.model.PaymentIntent.create(PaymentIntent.java:1027)
+	at com.demo.controller.PaymentController.payWithCard(PaymentController.java:160)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:925)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:830)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-04-01 22:51:52.541 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-01 22:51:52.545 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-01 22:51:52.546 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-01 22:51:55.933 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-04-01 22:51:55.944 INFO  [main] com.demo.DemoApplication - Starting DemoApplication using Java 25.0.1 with PID 72487 (/Users/sandeep/code/hhcc-app/backend-api/target/classes started by sandeep in /Users/sandeep/code/hhcc-app/backend-api)
+2026-04-01 22:51:55.944 DEBUG [main] com.demo.DemoApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-01 22:51:55.945 INFO  [main] com.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-01 22:51:56.139 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-01 22:51:56.158 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17 ms. Found 7 JPA repository interfaces.
+2026-04-01 22:51:56.288 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-01 22:51:56.291 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2026-04-01 22:51:56.291 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-01 22:51:56.291 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-01 22:51:56.307 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-01 22:51:56.307 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 347 ms
+2026-04-01 22:51:56.334 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-01 22:51:56.518 INFO  [main] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@31acfd4e
+2026-04-01 22:51:56.519 INFO  [main] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-01 22:51:56.550 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-01 22:51:56.568 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-01 22:51:56.576 INFO  [main] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-01 22:51:56.638 INFO  [main] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-01 22:51:56.924 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-01 22:51:56.934 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-01 22:51:56.999 INFO  [main] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-01 22:51:57.290 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2026-04-01 22:51:57.296 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path ''
+2026-04-01 22:51:57.300 INFO  [main] com.demo.DemoApplication - Started DemoApplication in 1.487 seconds (process running for 1.581)
+2026-04-01 22:52:02.753 INFO  [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-01 22:52:02.754 INFO  [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-04-01 22:52:02.755 INFO  [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-04-01 22:52:03.683 INFO  [http-nio-8081-exec-1] c.demo.controller.PaymentController - Stripe PaymentIntent created: pi_3THbMVF53aB0Dwdp0u26DpJJ
+2026-04-01 22:52:27.018 INFO  [http-nio-8081-exec-2] c.demo.controller.PaymentController - Stripe PaymentIntent created: pi_3THbMsF53aB0Dwdp0Gm67map
+2026-04-01 22:56:22.605 INFO  [http-nio-8081-exec-3] c.demo.controller.PaymentController - Stripe PaymentIntent created: pi_3THbQgF53aB0Dwdp1s2Et7Py
+2026-04-01 23:14:23.182 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16m56s515ms).
+2026-04-01 23:29:57.609 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=15m34s427ms).

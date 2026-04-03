@@ -1,0 +1,244 @@
+:host {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: #37474f;
+}
+form {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fafafa;
+}
+label {
+  display: block;
+  margin-top: 1rem;
+}
+input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  box-sizing: border-box;
+}
+button {
+  margin-top: 1.5rem;
+  padding: 0.5rem 1.5rem;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background: #1565c0;
+}
+.payment-layout {
+  display: flex;
+  min-height: 80vh;
+}
+.left-panel {
+  width: 220px;
+  background: #f4f6fa;
+  border-right: 1px solid #e0e0e0;
+  padding: 2rem 1rem 2rem 1.5rem;
+  min-height: 100%;
+  font-family: inherit;
+}
+.left-panel h3 {
+  margin-top: 0;
+  color: #1565c0;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+.left-panel ul {
+  list-style: none;
+  padding: 0;
+}
+.left-panel li {
+  margin-bottom: 1.2em;
+}
+.left-panel a {
+  color: #1976d2;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+.left-panel a:hover {
+  text-decoration: underline;
+  color: #1565c0;
+}
+.right-content {
+  flex: 1;
+  padding: 2rem 2rem 2rem 2rem;
+  font-family: inherit;
+}
+.success-warning {
+  margin-top: 2em;
+  padding: 1em;
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  border-radius: 4px;
+  font-size: 1.1em;
+  text-align: center;
+}
+
+/* ── NAVBAR ─────────────────────────────────────────────── */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 40px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-brand {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1a2a4a;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 48px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 10px;
+  text-decoration: none;
+  color: #1976d2;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+  margin: 0;
+  line-height: 1;
+}
+.nav-link:hover {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.user-tag {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 12px;
+  background: #e3f2fd;
+  color: #1976d2;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1;
+}
+.btn-logout {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 16px;
+  background: #fee2e2;
+  color: #dc2626;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+  margin: 0 !important;
+}
+.btn-logout:hover {
+  background: #fecaca;
+}
+
+/* ── FOOTER ─────────────────────────────────────────────── */
+.footer {
+  background: #1a2a4a;
+  padding: 32px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.footer-cross {
+  color: #ef9a9a;
+  font-size: 1rem;
+}
+
+.footer-copy {
+  color: #78909c;
+  font-size: 0.82rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links a {
+  color: #90caf9;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: #ffffff; }
+.payment-methods label {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 1.5em;
+  gap: 0.3em;
+  font-size: 1em;
+}
+.payment-methods svg {
+  height: 1.2em;
+  width: 1.2em;
+  vertical-align: middle;
+}
+.gpay-icon {
+  width: 1em;
+  height: 1em;
+  min-width: 1em;
+  min-height: 1em;
+  vertical-align: middle;
+  display: inline-block;
+}
+.card-icon {
+  width: 1em;
+  height: 1em;
+  min-width: 1em;
+  min-height: 1em;
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: 0.2em;
+}
+.stripe-element {
+  background-color: white;
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid #ccd0d2;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  margin-top: 0.25rem;
+}
